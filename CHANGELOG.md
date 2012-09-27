@@ -1,3 +1,7 @@
+=== 1.7.0 / 2012-09-26
+
+* added FCC Broadband encoder support
+
 === 1.6.5 / 2012-01-23
 
 * first release by @imajes, thanks @andre for all the hard work!

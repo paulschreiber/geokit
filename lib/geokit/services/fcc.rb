@@ -10,7 +10,7 @@ module Geokit
         return GeoLoc.new unless (res.is_a?(Net::HTTPSuccess) || res.is_a?(Net::HTTPOK))
         json = res.body
         logger.debug "FCC reverse-geocoding. LL: #{latlng}. Result: #{json}"
-        return self.json2GeoLoc(json)
+        self.json2GeoLoc(json)
       end
 
       # Template method which does the geocode lookup.
@@ -30,11 +30,11 @@ module Geokit
         ret = nil
         results = MultiJson.load(json)
 
-        if results.has_key?('Err') and results['Err']["msg"] == 'There are no results for this location'
+        if results.has_key?('Err') && results['Err']["msg"] == 'There are no results for this location'
           return GeoLoc.new
         end
         # this should probably be smarter.
-        if !results['status'] == 'OK'
+        if results['status'] != 'OK'
           raise Geokit::Geocoders::GeocodeError
         end
 

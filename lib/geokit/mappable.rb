@@ -367,6 +367,9 @@ module Geokit
     attr_accessor :accuracy
     # FCC Attributes
     attr_accessor :district_fips, :state_fips, :block_fips
+    # FCC Broadband Attributes
+    attr_accessor :tract, :tract_fips, :msa, :cbsa, :city_fips
+    attr_accessor :congressional_district, :state_house_district, :state_senate_district
 
 
     # Constructor expects a hash of symbols to correspond with attributes.

@@ -135,22 +135,22 @@ module Geokit
         res.precision      = 'block'
         res.country_code   = 'US'
 
-        res.block_fips    = results['block'][0]['FIPS']
+        res.block_fips    = results['block'][0]['FIPS'] if results['block']
 
-        res.tract         = results['censusTract'][0]['name']
-        res.tract_fips    = results['censusTract'][0]['fips']
+        res.tract         = results['censusTract'][0]['name'] if results['censusTract']
+        res.tract_fips    = results['censusTract'][0]['fips'] if results['censusTract']
 
-        res.city          = results['censusPlace'][0]['name']
-        res.city_fips     = results['censusPlace'][0]['fips']
+        res.city          = results['censusPlace'][0]['name'] if results['censusPlace']
+        res.city_fips     = results['censusPlace'][0]['fips'] if results['censusPlace']
 
-        res.district      = results['county'][0]['name']
-        res.district_fips = results['county'][0]['fips']
+        res.district      = results['county'][0]['name'] if results['county']
+        res.district_fips = results['county'][0]['fips'] if results['county']
 
-        res.msa           = results['msa'][0]['name']
-        res.cbsa          = results['msa'][0]['cbsa']
+        res.msa           = results['msa'][0]['name'] if results['msa']
+        res.cbsa          = results['msa'][0]['cbsa'] if results['msa']
 
-        res.state         = results['state'][0]['stateCode']
-        res.state_fips    = results['state'][0]['fips']
+        res.state         = results['state'][0]['stateCode'] if results['state']
+        res.state_fips    = results['state'][0]['fips'] if results['state']
 
         res.congressional_district = results['congressionalDistrict'][0]['districtId']
         res.state_house_district   = results['stateHouseDistrict'][0]['name'].split(" ").last

@@ -135,26 +135,46 @@ module Geokit
         res.precision      = 'block'
         res.country_code   = 'US'
 
-        res.block_fips    = results['block'][0]['FIPS'] if results['block']
+        if results['block'] && results['block'][0]
+          res.block_fips    = results['block'][0]['FIPS']
+        end
 
-        res.tract         = results['censusTract'][0]['name'] if results['censusTract']
-        res.tract_fips    = results['censusTract'][0]['fips'] if results['censusTract']
+        if results['censusTract'] && results['censusTract'][0]
+          res.tract         = results['censusTract'][0]['name']
+          res.tract_fips    = results['censusTract'][0]['fips']
+        end
 
-        res.city          = results['censusPlace'][0]['name'] if results['censusPlace']
-        res.city_fips     = results['censusPlace'][0]['fips'] if results['censusPlace']
+        if results['censusPlace'] && results['censusPlace'][0]
+          res.city          = results['censusPlace'][0]['name']
+          res.city_fips     = results['censusPlace'][0]['fips']
+        end
 
-        res.district      = results['county'][0]['name'] if results['county']
-        res.district_fips = results['county'][0]['fips'] if results['county']
+       if results['county'] && results['county'][0]
+          res.district      = results['county'][0]['name']
+          res.district_fips = results['county'][0]['fips']
+        end
 
-        res.msa           = results['msa'][0]['name'] if results['msa']
-        res.cbsa          = results['msa'][0]['cbsa'] if results['msa']
+        if results['msa'] && results['msa'][0]
+          res.msa           = results['msa'][0]['name']
+          res.cbsa          = results['msa'][0]['cbsa']
+        end
 
-        res.state         = results['state'][0]['stateCode'] if results['state']
-        res.state_fips    = results['state'][0]['fips'] if results['state']
+       if results['state'] && results['state'][0]
+          res.state         = results['state'][0]['stateCode']
+          res.state_fips    = results['state'][0]['fips']
+        end
 
-        res.congressional_district = results['congressionalDistrict'][0]['districtId']
-        res.state_house_district   = results['stateHouseDistrict'][0]['name'].split(" ").last
-        res.state_senate_district  = results['stateSenateDistrict'][0]['name'].split(" ").last
+        if results['congressionalDistrict'] && results['congressionalDistrict'][0]
+          res.congressional_district = results['congressionalDistrict'][0]['districtId']
+        end
+        
+        if results['stateHouseDistrict'] && results['stateHouseDistrict'][0]
+          res.state_house_district   = results['stateHouseDistrict'][0]['name'].split(" ").last
+        end
+        
+        if results['stateSenateDistrict'] && results['stateSenateDistrict'][0]
+          res.state_senate_district  = results['stateSenateDistrict'][0]['name'].split(" ").last
+        end
 
         res
       end
